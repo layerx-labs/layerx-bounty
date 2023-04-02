@@ -7,12 +7,18 @@ async function main() {
 
   const lockedAmount = ethers.utils.parseEther("1");
 
-  const Lock = await ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
+  const PolyChain = await ethers.getContractFactory("PolyContract");
+  const polyChain = await PolyChain.deploy(
+    "0x7ca7215c6B8013f249A195cc107F97c4e623e5F5", 
+    "0x326C977E6efc84E512bB9C30f76E30c160eD06FB", 
+    "0x6265623332336430386535363430386138633835323731623264623466313936");
 
-  await lock.deployed();
+  await polyChain.deployed();
+  console.log("Polygon Contract address:", polyChain.address);
 
-  console.log(`Lock with 1 ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`);
+
+
+
 }
 
 // We recommend this pattern to be able to use async/await everywhere
