@@ -1,5 +1,5 @@
 
-## ETH Samba 🇧🇷 - LayerX Bounty 
+## LayerX Bounty 
 The goal of this bounty is to build a web3 project that uses LayerX dappKit and rocketKit frameworks.
 
 Themes:
