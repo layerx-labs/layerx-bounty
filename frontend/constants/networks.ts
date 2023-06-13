@@ -1,19 +1,19 @@
 enum ChainName {
-  LOCAL = "Local",
-  ETHEREUM = "Ethereum",
-  RINKEBY = "Rinkeby",
-  GOERLI = "Goerli",
-  POLYGON = "Polygon",
-  MUMBAI = "Mumbai",
+  LOCAL = 'Local',
+  ETHEREUM = 'Ethereum',
+  RINKEBY = 'Rinkeby',
+  GOERLI = 'Goerli',
+  POLYGON = 'Polygon',
+  MUMBAI = 'Mumbai',
 }
 
 export enum ChainId {
   LOCAL = 1337,
-  ETHEREUM = 1, 
+  ETHEREUM = 1,
   RINKEBY = 4,
   GOERLI = 5,
   POLYGON = 137,
-  MUMBAI = 80001
+  MUMBAI = 80001,
 }
 
 export interface Chain {
@@ -26,32 +26,32 @@ export const chains: Chain[] = [
   {
     id: ChainId.ETHEREUM,
     name: ChainName.ETHEREUM,
-    rpc: "https://rpc.ankr.com/eth",
+    rpc: 'https://rpc.ankr.com/eth',
   },
   {
     id: ChainId.LOCAL,
     name: ChainName.LOCAL,
-    rpc: "http://localhost:8545",
+    rpc: 'http://localhost:8545',
   },
   {
     id: ChainId.GOERLI,
     name: ChainName.GOERLI,
-    rpc: "https://rpc.ankr.com/eth_goerli",
+    rpc: 'https://rpc.ankr.com/eth_goerli',
   },
   {
     id: ChainId.MUMBAI,
     name: ChainName.MUMBAI,
-    rpc: "https://rpc.ankr.com/eth_goerli",
+    rpc: 'https://rpc.ankr.com/eth_goerli',
   },
   {
     id: ChainId.POLYGON,
     name: ChainName.POLYGON,
-    rpc: "https://rpc.ankr.com/polygon",
+    rpc: 'https://rpc.ankr.com/polygon',
   },
   {
     id: ChainId.RINKEBY,
     name: ChainName.RINKEBY,
-    rpc: "https://rpc.ankr.com/eth_rinkeby",
+    rpc: 'https://rpc.ankr.com/eth_rinkeby',
   },
 ];
 

@@ -1,11 +1,11 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
-import 'dotenv/config';
-import TESTING_ACCOUNTS from "./data/accounts-testing"
+import "dotenv/config";
+import TESTING_ACCOUNTS from "./data/accounts-testing";
 
 const config: HardhatUserConfig = {
-  solidity:  {
-    version: "0.8.17",
+  solidity: {
+    version: "0.8.7",
     settings: {
       optimizer: {
         enabled: true,
@@ -16,44 +16,52 @@ const config: HardhatUserConfig = {
   defaultNetwork: "local",
   networks: {
     local: {
-      url: 'http://localhost:8545',
+      url: "http://localhost:8545",
       accounts: [...TESTING_ACCOUNTS],
     },
     moonbase: {
-      url: 'https://rpc.api.moonbase.moonbeam.network',
+      url: "https://rpc.api.moonbase.moonbeam.network",
+    },
+    sepolia: {
+      url: process.env.SEPOLIA_RPC,
+      accounts: [process.env.MM_PRIVATE_KEY!],
+    },
+    goerli: {
+      url: process.env.GOERLI_RPC,
+      accounts: [process.env.MM_PRIVATE_KEY!],
     },
     moonbeam: {
-      url: 'https://rpc.api.moonbeam.network',
+      url: "https://rpc.api.moonbeam.network",
     },
     kovan: {
-      url: `https://kovan.infura.io/v3/${process.env.DEPLOY_INFURA_KEY}`
+      url: `https://kovan.infura.io/v3/${process.env.DEPLOY_INFURA_KEY}`,
     },
     mainnet: {
-      url: `https://mainnet.infura.io/v3/${process.env.DEPLOY_INFURA_KEY}`
+      url: `https://mainnet.infura.io/v3/${process.env.DEPLOY_INFURA_KEY}`,
     },
     ropsten: {
-      url: `https://ropsten.infura.io/v3/${process.env.DEPLOY_INFURA_KEY}`
+      url: `https://ropsten.infura.io/v3/${process.env.DEPLOY_INFURA_KEY}`,
     },
     seneca: {
-      url: 'https://eth-seneca.taikai.network:8080',
+      url: "https://eth-seneca.taikai.network:8080",
       accounts: [...TESTING_ACCOUNTS],
     },
     afrodite: {
-      url: 'https://eth-afrodite.taikai.network:8080',
+      url: "https://eth-afrodite.taikai.network:8080",
       accounts: [...TESTING_ACCOUNTS],
     },
     irene: {
-      url: 'https://eth-irene.taikai.network:8080',
+      url: "https://eth-irene.taikai.network:8080",
       accounts: [...TESTING_ACCOUNTS],
     },
     iris: {
-      url: 'https://eth-iris.taikai.network:8080',
+      url: "https://eth-iris.taikai.network:8080",
       accounts: [...TESTING_ACCOUNTS],
-    }
+    },
   },
   paths: {
-    artifacts: "./build"
-  }
+    artifacts: "./build",
+  },
 };
 
 export default config;
