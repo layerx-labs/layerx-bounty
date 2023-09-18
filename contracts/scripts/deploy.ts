@@ -1,18 +1,26 @@
 import { ethers } from "hardhat";
 
+require('dotenv').config({ path: __dirname + '/.env' })
+
+
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
-  const unlockTime = currentTimestampInSeconds + ONE_YEAR_IN_SECS;
 
-  const lockedAmount = ethers.utils.parseEther("1");
 
-  const Lock = await ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
+  const accounts = [
+    "0xa4c51c75A46Ac20161bBb860d2dAA7F52a4F3569",
+    "0x287531d24d403BA4e611C70a585F5A12BFF013Ff",
+    "0xbCbbf6bE81923b3Dd3FA1CA3604BE1E50E615E3C",
+  ]
+  
+  const multisigWalletFactory = await ethers.getContractFactory("MultiSigAssetsManagement");
 
-  await lock.deployed();
+  console.log("[*] Deploying MultiSigWallet...");
+  
+  const multisigWallet = await multisigWalletFactory.deploy(accounts, 3);
+  await multisigWallet.deployed();
 
-  console.log(`Lock with 1 ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`);
+  console.log("Address:", multisigWallet.address)
+ 
 }
 
 // We recommend this pattern to be able to use async/await everywhere
